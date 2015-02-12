@@ -1,0 +1,12 @@
+<books>
+	<book>
+		<bookName>哲学的慰藉</bookName>
+		<bookUrl>http://www.amazon.cn/%E5%93%B2%E5%AD%A6%E7%9A%84%E6%85%B0%E8%97%89-%E9%98%BF%E5%85%B0%C2%B7%E5%BE%B7%E6%B3%A2%E9%A1%BF/dp/B00JM2HNVG/ref=sr_1_1?ie=UTF8&qid=1423709296&sr=8-1&keywords=%E5%93%B2%E5%AD%A6%E7%9A%84%E6%85%B0%E8%97%89</bookUrl>
+		<bookCurPrice>15.99</bookCurPrice>
+	</book>
+	<book>
+		<bookName>xx</bookName>
+		<bookUrl>xxxxx</bookUrl>
+		<bookCurPrice>25.33</bookCurPrice>
+	</book>
+</books>
