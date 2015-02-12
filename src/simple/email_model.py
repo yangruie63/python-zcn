@@ -9,6 +9,16 @@ import  re
 from bs4 import BeautifulSoup
 
 
+
+class Book():
+	def __init__(self,bookName,bookUrl,bookCurPrice):
+		self.bookName = bookName
+		self.bookUrl = bookUrl
+		self.bookCurPrice = bookCurPrice
+			
+
+
+
 def read_properties(file_name):
 	f = open(file_name, 'r')
 	config = {}
@@ -21,7 +31,14 @@ def read_properties(file_name):
 
 
 def read_xml(file_name):
-	pass
+	f = open(file_name, 'r')
+	xml_content = f.read().decode('utf-8')
+	soup = BeautifulSoup(xml_content)
+	books = soup.find_all('books')[0].find_all('book')
+	
+	print books
+
+
 
 
 def sendMail():
@@ -56,5 +73,6 @@ def search_book_price():
 
 
 if(__name__=='__main__'):
-	sendMail()
+	#sendMail()
 	#search_book_price()
+	read_xml('book_config.xml')
