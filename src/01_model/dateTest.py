@@ -1,4 +1,4 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from mymodel import People,Man,Woman,onDate
 
 p = People('yangrui',25)

@@ -18,7 +18,7 @@ class Book():
 			
 
 
-
+#返回map类型的数据
 def read_properties(file_name):
 	f = open(file_name, 'r')
 	config = {}
@@ -29,14 +29,15 @@ def read_properties(file_name):
 	f.close()
 	return config
 
-
+#返回BookList
 def read_xml(file_name):
 	f = open(file_name, 'r')
 	xml_content = f.read().decode('utf-8')
 	soup = BeautifulSoup(xml_content)
 	books = soup.find_all('books')[0].find_all('book')
-	
-	print books
+	for x in books:
+		print x
+	print len(books)
 
 
 
