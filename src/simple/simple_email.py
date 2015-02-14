@@ -53,6 +53,7 @@ def read_book_xml(file_name):
 		bookPrice = x.findChildren("bookprice")[0]
 		book = Book(bookName.get_text(),bookUrl.get_text(),bookPrice.get_text())
 		result.append(book)	
+	f.close()
 	return result
 
 
@@ -78,6 +79,9 @@ def sendMail(book,last_price):
 	server.quit()
 	print '邮件已发送！'
 
+def write_log(log_txt):
+	with open('log','a') as f:
+		f.write(log_txt+'\n')
 
 
 def search_book_price(book):
@@ -97,17 +101,23 @@ def search_book_price(book):
 def start():
 	#获取需要监控的books
 	books = read_book_xml("book_config.xml");
+	log_txt = "程序开始运行:\n"
 	for book in books:
 		#获取当前书的最新价格
 		last_price = search_book_price(book)
+		cur_txt = ""
 		if last_price < book.getBookPrice():
-			print '%s，原价：%s，最新价格：%s' %(book.getBookName(),book.getBookPrice(),last_price)
+			cur_txt = '《%s》原价：%s，最新价格：%s' %(book.getBookName(),book.getBookPrice(),last_price)
 			sendMail(book,last_price)
 		else:
-			print '%s没有降价'% book.getBookName()
+			cur_txt = '《%s》没有降价'% book.getBookName()
+		log_txt = log_txt + cur_txt+"\n"
+		print cur_txt
+	write_log(log_txt)
 
 if(__name__=='__main__'):
 	#sendMail()
 	#search_book_price()
 	start();
+	# write_log("方法111")
 
