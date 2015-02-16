@@ -13,7 +13,6 @@ import time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
 class Book():
 	def __init__(self,bookName,bookUrl,oldPrice,lastPrice='0.00'):
 		self.__bookName = bookName
@@ -65,7 +64,7 @@ def read_book_xml(file_name):
 
 
 def sendMail(bookList):
-	mail_config = read_properties('email_config.properties')
+	mail_config = read_properties('email.properties')
 	content_real = ""
 	for book in bookList:
 		content = mail_config['content'];
@@ -106,7 +105,7 @@ def search_book_price(book):
 
 def start():
 	#获取需要监控的books
-	books = read_book_xml("book_config.xml")
+	books = read_book_xml("books.xml")
 	log_txt = time.strftime("%Y-%m-%d %H:%M:%S")+"\n"
 	for book in books:
 		last_price = search_book_price(book)
@@ -115,8 +114,8 @@ def start():
 			log_txt = log_txt + '《%s》原价：%s，最新价格：%s' %(book.getBookName(),book.getOldPrice(),last_price) +"\n"
 		else:
 			log_txt = log_txt + '《%s》没有降价'% book.getBookName() +"\n"
-	write_log(log_txt)
 	print log_txt
+	write_log(log_txt)
 	sendMail(books)
 
 if(__name__=='__main__'):
