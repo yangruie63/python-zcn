@@ -4,7 +4,7 @@ from email.header import Header
 from email.mime.text import MIMEText
 from email.utils import parseaddr, formataddr
 from bs4 import BeautifulSoup
-from config import email_config
+from config import *
 import smtplib
 import urllib2  
 import  re
