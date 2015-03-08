@@ -34,5 +34,5 @@ def selectById(id=None):
 	return list
 
 if(__name__=='__main__'):
-	list = selectById()
+	list = selectById(2)
 	print list
